@@ -210,5 +210,21 @@ public class Insumo_DAO {
         return (BaseDeDatos.getInstance().ejecutarActualizacionSQL(sql, param));
     }
    
+   /**
+    * Metodo que permite actualizar el estado del insumo de activado 'A' a desactivado 'D'
+    * para dar baja al insumo
+    * @param idinsumo id del insumo que se desea desactivar
+    * @return true=si lo logra o false=si no lo logra
+    * @throws Exception 
+    */
+    public boolean actualizarEstadoInsumoDarBaja(String idinsumo)throws Exception
+    {
+        BaseDeDatos.getInstance().conectar();
+        String sql="UPDATE insumo SET estado=? WHERE id_insumo=?";
+        String param[]=new String[1];
+        param[0]="D";
+        return BaseDeDatos.getInstance().ejecutarActualizacionSQL(sql, param);
+    }
+    
     
 }

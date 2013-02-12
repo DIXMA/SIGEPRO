@@ -96,4 +96,21 @@ public class Business_Insumo {
         return ret;
     }
     
+    /**
+     * Metodo que permite actualizar el valor del estado del insumo para desactivarlo
+     * @param insumos array con la informacio de los insumos que se desean desacrivar
+     * @return true=si lo logra o false=si no lo logra
+     * @throws Exception 
+     */
+    public boolean darBajaInsumoP(String []insumos)throws Exception
+    {
+        boolean ret=false;
+        for(int i=0;i<insumos.length;i++)
+        {
+            String dto[]=insumos[i].split("-");
+            ret=(new Insumo_DAO().actualizarEstadoInsumoDarBaja(dto[0]));
+        }
+        return ret;
+    }
+    
 }

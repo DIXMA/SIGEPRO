@@ -57,7 +57,7 @@ HttpSession sesionOk = request.getSession();
         if (sesionOk.getAttribute("rol").equals("Administrador")){%>  
             <fieldset>
                 <legend>Dar Baja a Insumo</legend>
-                <a href="DarBajaInsumo.jsp" target="algoX" class="a-btn">
+                <a href="DarBajaInsumo.jsp" target="_blank" class="a-btn">
                    <span class="a-btn-text">Dar Baja</span>
                    <span class="a-btn-slide-text">Insumo</span>
                    <span class="a-btn-icon-right">

@@ -4,6 +4,8 @@
     Author     : CORTEX
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="Business.Facade"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,13 +18,10 @@
         
         <!-- Necesario para añadir y quitar filas a la tabla -->
         <SCRIPT language="javascript">
-            function addRow(tableID,id,prec,valor,idProd) 
+            function addRow(tableID,id,nom) 
             {
                var table = document.getElementById(tableID);
                var rowCount = table.rows.length;
-               var bool=verificarValor(valor, idProd, rowCount);
-               if(bool==true)
-                { 
                     var row = table.insertRow(rowCount);
                     var cell1 = row.insertCell(0);
                     var element1 = document.createElement("input");
@@ -31,36 +30,20 @@
                     var cell2 = row.insertCell(1);
                     var element2 = document.createElement("input");
                     element2.type = "text";
-                    element2.value=prec;
+                    element2.value=id;
                     element2.readonly = "";
-                    element2.name="valProd";
+                    element2.name="idProd";
                     cell2.appendChild(element2); 
-                    var cell3 = row.insertCell(1);
+                    var cell3 = row.insertCell(2);
                     var element3 = document.createElement("input");
                     element3.type = "text";
-                    element3.value=id;
+                    element3.value=nom;
                     element3.readonly = "";
                     element3.name="nomProd";
                     cell3.appendChild(element3);
-                    var cell4 = row.insertCell(1);
-                    var element4 = document.createElement("input");
-                    element4.type = "text";
-                    element4.value=idProd;
-                    element4.readonly = "";
-                    element4.name="idProd";
-                    cell4.appendChild(element4);
-                    var cell5 = row.insertCell(1);
-                    var element5 = document.createElement("input");
-                    element5.type = "text";
-                    element5.value="1";
-                    element5.readonly = "";
-                    element5.name="cantiProd";
-                    element5.id=idProd+valor;
-                    cell5.appendChild(element5);
-                }
-               calcularValor()
-               cocatenarVender();
-               
+                    
+                
+               cocatenarVender(); 
           }
           function deleteRow(tableID) 
           {    total=0;
@@ -94,8 +77,6 @@
                calcularValor()
           }
           
-            
-            
             var cad ;
             function cocatenarVender()
             {
@@ -103,9 +84,9 @@
                 var precios=document.formCompra.valProd;
                 var id=document.formCompra.idProd;
                 var cant=document.formCompra.cantiProd;
-                if(nombres.length==undefined && precios.length==undefined && id.length==undefined)
+                if(nombres.length==undefined && id.length==undefined)
                 {
-                    cad=id.value+"-"+nombres.value+"-"+precios.value+"-"+cant.value+"%";
+                    cad=id.value+"-"+nombres.value+"-"+"%";
                     document.formCompra.ocultosValores.value=cad;
                 }
                 else
@@ -113,19 +94,86 @@
                     
                     for(var i=0;i<document.formCompra.idProd.length;i++)
                     {  
-                        if(i==0)cad=id[0].value+"-"+nombres[0].value+"-"+precios[0].value+"-"+cant[i].value+"%";
+                        if(i==0)cad=id[0].value+"-"+nombres[0].value+"-"+"%";
                         else
-                        cad+=id[i].value+"-"+nombres[i].value+"-"+precios[i].value+"-"+cant[i].value+"%";
+                        cad+=id[i].value+"-"+nombres[i].value+"-"+"%";
                     }
                     document.formCompra.ocultosValores.value=cad;
                 }
             }
-            
-            
-           
        </script> 
     </head>
-    <body>
+     <body id="bodyPricipal">
+        <div id="contenedorVaildarUser">
+            <div id="CabeceraVaildarUser">                
+            </div>
+            <div id="contenidoIiSecion">
+                
+                
+        <form id="registroCompra" name="formCompra" action="RealizarCompraProveedor.jsp">
+            <fieldset>
+                <input type="text"  id="valoresOcultos" name="ocultosValores">             
+            </fieldset>
+            <fieldset>                
+                <legend>Seleccion de Insumos</legend>
+                 <center>
+                    <a href="#" id="button2" class="buttonText4" onclick="deleteRow('TBprodVenta');">Eliminar Insumo</a>
+                    <a href="#openModal" id="button3" class="buttonText4" >Agregar Insumo</a>
+                    <table id="TBprodVenta" width="350px" border="1">
+                        <tr>
+                            <th scope="col">Selec</th>
+                            <th scope="col">id_Insumo</th>
+                            <th scope="col">Nombre Insumo</th>
+                        </tr>  
+                        
+                    </table>
+                    
+                </center>
+                  <br>
+                  <br>
+                  <br>
+                <input type="submit" class="botonEnvio" id="enviarCompra" value="Registrar Compra" onclick="cocatenarVender();">
+            </fieldset>
+        </form>
+                
+           <div id="openModal" class="modalDialog">
+                   <div>
+                        
+                       <a href="#close" title="Close" class="close" onclick="">X</a>
+                            <center>                  
+                            <%
+                             Facade x=new Facade();
+                             ArrayList<String> ad=x.cargarInsumos();
+                             for(int i=0;i<ad.size();i++){
+                                  String dat[]=ad.get(i).split("%"); %>
+                                  <input class="button amarilloAdicional" type="button" name="Dar de Baja" id="adicional" value="<%=dat[1] %>" onclick="addRow('TBprodVenta','<%=dat[0] %>','<%=dat[1] %>')" >
+                            <%}%>
+                                
+                            </center>
+                       
+                    </div>
+                  
+               </div>
+              
+                
+         <hr>
+                <center>
+                        <destacar><a href="../jsp/PrincipalPlayShots.jsp">Volver a la Página Inicial</a></destacar>
+                        <center><label>Copyright &copy; 2013 grupo Analisis y Diseño de Sistemas ufps IIsem 2012</label></center>  
+                </center>
+                
+            </div>
+            
+                     
+            <div id="PieVaildarUser">
+           
+            
+            </div>
+        </div>
+    
+    
+        
+        
         
     </body>
 </html>

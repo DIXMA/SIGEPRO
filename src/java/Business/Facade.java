@@ -192,4 +192,16 @@ public class Facade
    {
        return (new Business_Inventario().setInventarioPosSalidaDia(insumos));
    }
+   
+   /**
+    * Metodo que permite invocar la desactivacion de los insumos
+    * @param insumos array con la informacion de los insumos a desactivar
+    * @return
+    * @throws Exception 
+    */
+   public boolean darBajaInsumo(String []insumos)throws Exception
+   {
+       return (new Business_Insumo().darBajaInsumoP(insumos));
+   }
+   
 }
