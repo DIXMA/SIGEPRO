@@ -1,0 +1,225 @@
+body 
+{ 
+    background:url("../img/back.png") repeat; 
+    font-family:Arial, Helveica, sans-serif; 
+    color:#7f7f7f;
+}
+input 
+{ 
+    font-family:Arial, Helvetica, sans-serif;
+    color:#595959; 
+    font-size:18px;
+}
+a 
+{
+    outline:none; 
+    text-decoration:none;
+}
+
+article #enlaces{
+    background:url("../img/paisa.png");
+    background-repeat: repeat;
+    height: 150px;
+}
+
+article{
+    float:  bottom;
+}
+
+.main 
+{
+    width:400px; 
+    height:250px; 
+    position:absolute; 
+    top:50%; left:50%;
+    margin-top:-125px; 
+    margin-left:-200px;
+}
+.box 
+{ 
+    width:370px; 
+    overflow:hidden; 
+    padding:15px; 
+    background: #5a5b5b; 
+    border:1px solid white; 
+    border-radius: 10px;
+    -moz-border-radius: 10px; 
+    -webkit-border-radius: 10px; 
+    
+   box-shadow: -1px 1px 40px #333333; 
+   -webkit-box-shadow: -1px 1px 40px #333333; 
+   -moz-box-shadow: -1px 1px 40px #333333;
+}
+.box h2 
+{
+    color:white; 
+    font-size:25px; 
+    margin:0; 
+    padding:0 0 10px 0; 
+    font-weight:bold; 
+    outline:none;
+}
+.box h3 
+{ 
+    color:#7f7f7f;
+    font-size:17px; 
+    line-height:20px; 
+    margin:0;
+    padding:0; 
+    font-weight:normal; 
+    outline:none;
+}
+
+.form {
+    margin:0; 
+    padding:0;
+}
+.form fieldset 
+{
+    border:none;
+    padding: 10px 0 0; 
+    margin:0;
+}
+.form .row
+{ 
+    margin-bottom:6px;
+    position:relative; 
+    line-height:33px;
+}
+
+.form .row input[type="text"],.form .row input[type="password"]
+{ 
+    height:33px; 
+    line-height:33px;
+    border:1px solid #c5c5c5; 
+    border-radius:3px; 
+    -moz-border-radius:3px; 
+    -webkit-border-radius:3px; 
+    box-shadow: 0 0 5px rgba(0,0,0,.1), 0 2px 2px rgba(0,0,0,.1) inset; 
+    -moz-box-shadow: 0 0 5px rgba(0,0,0,.1), 0 2px 2px rgba(0,0,0,.1) inset; 
+    -webkit-box-shadow: 0 0 5px rgba(0,0,0,.1), 0 2px 2px rgba(0,0,0,.1) inset;
+}
+.form .row input[type="text"]:focus, .form .row input[type="text"]:hover, .form .row input[type="password"]:focus, .form .row input[type="password"]:hover 
+{ 
+    border:1px solid #51b1c7; 
+    box-shadow: 0 0 5px #51b1c7, 0 2px 2px rgba(0,0,0,.1) inset;
+    -moz-box-shadow: 0 0 5px #51b1c7, 0 2px 2px rgba(0,0,0,.1) inset; 
+    -webkit-box-shadow: 0 0 5px #51b1c7, 0 2px 2px rgba(0,0,0,.1) inset;
+}
+.form .row input.login 
+{
+    background:url("../img/input_login.png") left center no-repeat #f5f5f5; 
+    width:86%; 
+    padding: 1px 5px 1px 45px;
+}
+.form .row input.password 
+{
+    background:url("../img/input_password.png") left center no-repeat #f5f5f5;
+    padding: 1px 130px 1px 45px; 
+}
+.form .row input.error
+{ 
+    border:1px solid #eb9393; 
+    box-shadow: 0 0 5px #f7c4c4;
+    -moz-box-shadow: 0 0 5px #f7c4c4; 
+    -webkit-box-shadow: 0 0 5px #f7c4c4; 
+    background-color:#fce4e4; 
+}
+
+.form .row a.forgot
+{ 
+    position:absolute; 
+    top:2px; right:10px; 
+    color:#909090; 
+    font-size:12px; 
+    text-shadow:1px 1px 1px #fff;
+}
+.form .row a.forgot:hover 
+{
+    color:#6e6e6e;
+}
+.form .row input[type="checkbox"] 
+{ 
+    display:block; float:left; margin: 9px 6px 9px 2px; 
+}
+.form .row label 
+{
+    color:#086f86; 
+    font-size:14px; 
+    display:block; 
+    float:left; 
+}
+.form .row input[type="submit"]
+{ 
+ 
+    transition: all 0.20s linear;
+    -webkit-transition: all 0.20s linear;
+    -moz-transition: all 0.20s linear;
+    position: relative;
+    bottom: 0;
+
+  
+    color:white; 
+    text-shadow:1px 1px 0 #c5c7c8; 
+    border:1px solid black; 
+    border-radius:3px; 
+    -moz-border-radius:3px; 
+    -webkit-border-radius:3px; 
+    border-top: 1px solid #000000;
+   background: #090a0a;
+   background: -webkit-gradient(linear, left top, left bottom, from(#727678), to(#090a0a));
+   background: -webkit-linear-gradient(top, #727678, #090a0a);
+   background: -moz-linear-gradient(top, #727678, #090a0a);
+   background: -ms-linear-gradient(top, #727678, #090a0a);
+   background: -o-linear-gradient(top, #727678, #090a0a);
+    font-size:16px; 
+    padding:5px 20px; 
+    font-weight:bold; 
+    float:right;
+}
+.form .row input[type="submit"]:hover
+{ 
+    color: #1a191a;
+    background:#51b1c7;
+    background: -webkit-gradient(linear, bottom, top, from(#4297ab), to(#60cce3)); 
+    
+}
+
+.form .row input[type="submit"]:active
+{
+    box-shadow:0 0 0 #0491a5, inset 0 0 5px rgba(0, 0, 0, 0.4);
+    bottom: -1px;
+    background:#419cb1;
+    
+}
+
+.copy 
+{ 
+    float:right;
+    color:#9eabae;
+    font-size:12px; 
+    margin:10px 16px 0 0; text-shadow:1px 1px 1px #fff;
+}
+
+a:link, a:visited 
+{
+text-decoration:none;
+cursor:pointer;
+color:#333333;
+}
+
+a:hover 
+{
+text-decoration:none;
+cursor:pointer;
+color:#333333;
+}
+
+
+
+
+
+.close {
+    position:relative;
+    left:480px;
+}

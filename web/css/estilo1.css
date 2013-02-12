@@ -1,0 +1,56 @@
+/* la etiqueta LABEL */
+  .elboton {
+    background-color: #AAA;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #222 inset;
+    color: #FFF;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 20px;
+    margin: 0;
+    padding: 5px 15px;
+    position: relative;
+    text-shadow: 1px 1px 1px #000;
+  }
+  /* en un post de Blogger. oculto los saltos de línea internos para no volverme loco */
+  .elboton br {display:none;}
+  /* el contenedor con lo lo que queremos mostrar */
+  .hiddenbox {
+    background-color: #FFF;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #000 inset;
+    left: 0;
+    line-height: 0;
+    margin: 25px 0;
+    opacity: 0;
+    padding: 15px;
+    position: absolute;
+    text-align: center;
+    top: 100%;
+    z-index: 100;
+    -moz-transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+    -o-transform-origin: 0 0;
+    -ms-transform-origin: 0 0;
+    -moz-transform: scale(0);
+    -webkit-transform: scale(0);
+    -o-transform: scale(0);
+    -ms-transform: scale(0);
+    -moz-transition: all 1s;
+    -webkit-transition: all 1s;
+    -o-transition: all 1s;
+    -ms-transition: all 1s;
+  }
+  /* se muestra el contenido oculto */
+  .popUpControl:checked ~ label > .hiddenbox {
+    opacity: 1;
+    -moz-transform: scale(1);
+    -webkit-transform: scale(1);
+    -o-transform: scale(1);
+    -ms-transform: scale(1);
+  }
+  /* el CHECKBOX lo mantenemos siempre oculto */
+  .popUpControl {display: none;}
+  /* cambiamos el texto del pseudo-botón */
+  .popUpControl:checked ~ label > span.click {display: none;}
+  .popUpControl:checked ~ label:before {content: "ocultar";}
