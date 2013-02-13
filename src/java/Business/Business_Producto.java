@@ -31,4 +31,23 @@ public class Business_Producto {
        return cad;  
     }
     
+    /**
+     * Metodo que concatena la informacion de los productos registrados
+     * @return array con la  informacion de los productos registrados
+     * @throws Exception 
+     */
+    public ArrayList<String> listarTodosProductos()throws Exception
+    {
+        ArrayList<String> a=new ArrayList<String>();
+        ArrayList<Producto_DTO> x=(new Producto_DAO().listarProductos());
+        if(x.size()>0)
+        {
+            for(int i=0;i<x.size();i++)
+            {
+                a.add(x.get(i).getDatos());
+            }
+        }
+        return a;
+    }
+    
 }

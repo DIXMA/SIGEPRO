@@ -12,10 +12,10 @@ public class Producto_DTO {
     private String id_Produto;
     private Receta_DTO receta_Producto;
     private float precio_Producto;
-    private boolean tipo_Producto; //true=Shot & false=Coctel
+    private String tipo_Producto; 
     private String nombre_Producto;
 
-    public Producto_DTO(String id_Produto, Receta_DTO receta_Producto, float precio_Producto, boolean tipo_Producto, String nm) {
+    public Producto_DTO(String id_Produto, Receta_DTO receta_Producto, float precio_Producto, String tipo_Producto, String nm) {
         this.id_Produto = id_Produto;
         this.receta_Producto = receta_Producto;
         this.precio_Producto = precio_Producto;
@@ -58,11 +58,11 @@ public class Producto_DTO {
         this.precio_Producto = precio_Producto;
     }
 
-    public boolean isTipo_Producto() {
+    public String getTipo_Producto() {
         return tipo_Producto;
     }
 
-    public void setTipo_Producto(boolean tipo_Producto) {
+    public void setTipo_Producto(String tipo_Producto) {
         this.tipo_Producto = tipo_Producto;
     }
     
@@ -71,5 +71,8 @@ public class Producto_DTO {
         return this.getId_Produto()+"%"+this.getNombre_Producto()+"%"+this.getPrecio_Producto();
     }
     
-    
+    public String getDatos()
+    {
+        return this.getId_Produto()+"$"+this.getReceta_Producto().getId_Receta()+"$"+this.getTipo_Producto()+"$"+this.getPrecio_Producto()+"$"+this.getNombre_Producto();
+    }
 }

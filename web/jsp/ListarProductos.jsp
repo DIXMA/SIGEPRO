@@ -4,6 +4,8 @@
     Author     : CORTEX
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="Business.Facade"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,7 +18,7 @@
         <script language="javascript">
                       
                        
-            function addRow(tableID,id_producto,id_receta,tipo_producto,nombre_Producto) 
+            function addRow(tableID,id_producto,id_receta,tipo_producto,precio,nombre_Producto) 
             {
                     var table = document.getElementById(tableID);
                     var rowCount = table.rows.length;
@@ -36,7 +38,7 @@
                     var cell3 = row.insertCell(1);
                     var element3 = document.createElement("input");
                     element3.type = "text";
-                    element3.value=id;
+                    element3.value=tipo_producto;
                     element3.readonly = "";
                     element3.name="nomProd";
                     cell3.appendChild(element3);
@@ -44,8 +46,14 @@
                     var element4 = document.createElement("input");
                     element4.type = "text";
                     element4.readonly = "";
-                    element4.value=nombre_Producto;
+                    element4.value=precio;
                     cell4.appendChild(element4);
+                    var cell5 = row.insertCell(1);
+                    var element5 = document.createElement("input");
+                    element5.type = "text";
+                    element5.readonly = "";
+                    element5.value=nombre_Producto;
+                    cell5.appendChild(element5);
                     
                 }
           
@@ -70,6 +78,24 @@
                         
                     </table>
                 </center>
+                    <%
+                        Facade f=new Facade();
+                        ArrayList<String> da=f.listarProductos();
+                        if(da.size()>0){
+                            for(int i=0;i<da.size();i++)
+                            {
+                                String dto[]=da.get(i).split("$");
+                                String sx="<script type='text/javascript'>addRow('TBprodVenta','"+dto[0]+"','"+dto[1]+"','"+dto[2]+"','"+dto[3]+"','"+dto[4]+");</script>";
+                               %>
+                               
+                               <%=sx%>
+                               
+                            <%}
+                        }
+                    %>
+                        
+
+                    
                 </fieldset>
                 <center>
                         <destacar><a href="../jsp/PrincipalPlayShots.jsp">Volver a la Página Inicial</a></destacar>

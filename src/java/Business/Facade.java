@@ -280,9 +280,34 @@ public class Facade
        return (new Business_Compra().pagarDeudaProveedor(datos));
    }
    
+   /**
+    * Descuenta el pago de deuda
+    * @param dto arra con la info de la deuda
+    * 
+    * @return
+    * @throws Exception 
+    */
    public boolean descontarPagoDeuda(String dto[])throws Exception
    {
        String aper=(new Business_ConsolidadoVentasDia().getIdAperturaUltim());
        return (new Business_ConsolidadoVentasDia().actualizarPagoProveedor(aper, dto[1]));
    }
+   
+   /**
+    * Metodo q invoca la concatenacion dela informacion de los productos existentes en el sistema
+    * @return array con la informacion de los productos
+    * @throws Exception 
+    */
+   public ArrayList<String> listarProductos()throws Exception
+   {
+       return (new Business_Producto().listarTodosProductos());
+   }
+   
+   
+   public void informeCompraInsumo()throws Exception
+   {
+       GeneradorReportes f=new GeneradorReportes();
+       f.generadorReporteCompraInsumo();
+   }
+   
 }

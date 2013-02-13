@@ -3,10 +3,14 @@
     Created on : 31/01/2013, 09:49:09 AM
     Author     : CORTEX
 --%>
+<%@page import="Business.Facade"%>
 <%
 HttpSession sesionOk = request.getSession();
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="DTO.GeneradorReportes"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.SQLException" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,7 +22,7 @@ HttpSession sesionOk = request.getSession();
         <!-- Necesario para el Caledario -->
 	<link rel="stylesheet" type="text/css" href="../css/tcal.css" />
 	<script type="text/javascript" src="../css/tcal.js"></script> 
-        
+        <%Facade x=new Facade();%>
     </head>
     <body >
         
@@ -44,7 +48,7 @@ HttpSession sesionOk = request.getSession();
                         <a href="#" class="enlace boton" onclick="">Venta de Shots y Cocteles</a> 
                         <a href="#" class="enlace boton" onclick="">Insumos Utilizados</a> 
                         <a href="#" class="enlace boton" onclick="">Ventas Vs Produccion</a> 
-                        <a href="#" class="enlace boton" onclick="">Compra de Insumos</a> 
+                        <a href="#" class="enlace boton" onclick="<% x.informeCompraInsumo(); %>">Compra de Insumos</a> 
                         <a href="#" class="enlace boton" onclick="">Dadas de Baja</a> 
                     </center>
             </fieldset>

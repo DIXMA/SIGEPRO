@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportecomprasdeinsumos" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d067a8e3-b3c4-4e46-a16d-64d00207020c">
+	<property name="ireport.zoom" value="1.2100000000000002"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="42"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString>
+		<![CDATA[SELECT
+     compraInsumo."fecha_compra" AS compraInsumo_fecha_compra,
+     compraInsumo."cant_compra" AS compraInsumo_cant_compra,
+     compraInsumo."contenido" AS compraInsumo_contenido,
+     proveedor."id_proveedor" AS proveedor_id_proveedor,
+     proveedor."nombre_proveedor" AS proveedor_nombre_proveedor,
+     insumo."id_insumo" AS insumo_id_insumo,
+     insumo."nombre_insumo" AS insumo_nombre_insumo,
+     compraInsumo."id_insumo" AS compraInsumo_id_insumo,
+     compraInsumo."id_proveedor" AS compraInsumo_id_proveedor
+FROM
+     "public"."proveedor" proveedor INNER JOIN "public"."compraInsumo" compraInsumo ON proveedor."id_proveedor" = compraInsumo."id_proveedor"
+     INNER JOIN "public"."insumo" insumo ON compraInsumo."id_insumo" = insumo."id_insumo"]]>
+	</queryString>
+	<field name="comprainsumo_fecha_compra" class="java.lang.String"/>
+	<field name="comprainsumo_cant_compra" class="java.lang.String"/>
+	<field name="comprainsumo_contenido" class="java.lang.String"/>
+	<field name="proveedor_id_proveedor" class="java.lang.String"/>
+	<field name="proveedor_nombre_proveedor" class="java.lang.String"/>
+	<field name="insumo_id_insumo" class="java.lang.String"/>
+	<field name="insumo_nombre_insumo" class="java.lang.String"/>
+	<field name="comprainsumo_id_insumo" class="java.lang.String"/>
+	<field name="comprainsumo_id_proveedor" class="java.lang.String"/>
+	<sortField name="proveedor_id_proveedor"/>
+	<group name="proveedor_id_proveedor">
+		<groupExpression><![CDATA[$F{proveedor_id_proveedor}]]></groupExpression>
+		<groupHeader>
+			<band height="45">
+				<frame>
+					<reportElement uuid="843db9ab-25fa-4ba8-90f0-ecee72b6d607" mode="Opaque" x="-21" y="7" width="597" height="15" forecolor="#B89F7D" backcolor="#F2EBDF"/>
+					<rectangle>
+						<reportElement uuid="2320f2bf-25da-49bd-998f-406717bb66c3" mode="Opaque" x="35" y="1" width="26" height="11" backcolor="#736343"/>
+						<graphicElement>
+							<pen lineWidth="0.0"/>
+						</graphicElement>
+					</rectangle>
+					<textField>
+						<reportElement uuid="11f80fea-88e4-421b-bdac-63097a5dfcf2" style="SubTitle" x="68" y="0" width="413" height="15" forecolor="#736343"/>
+						<textElement>
+							<font size="13" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{proveedor_nombre_proveedor}]]></textFieldExpression>
+					</textField>
+				</frame>
+				<staticText>
+					<reportElement uuid="3fadec38-5fbf-4053-a67d-52274a74bd15" style="Column header" x="247" y="29" width="69" height="15" forecolor="#736343"/>
+					<textElement/>
+					<text><![CDATA[Fecha]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="6812fa77-a161-405d-916a-99a2b2b83bb0" style="Column header" x="356" y="29" width="69" height="15" forecolor="#736343"/>
+					<textElement/>
+					<text><![CDATA[Cantidad]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="c036f1ea-8ed9-47be-80e1-df8340b15c55" style="Column header" x="455" y="29" width="69" height="15" forecolor="#736343"/>
+					<textElement/>
+					<text><![CDATA[Contenido]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="16b8283c-225f-4e01-b27c-f17e08772884" style="Column header" x="14" y="28" width="69" height="15" forecolor="#736343"/>
+					<textElement/>
+					<text><![CDATA[Nombre]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="157" splitType="Stretch">
+			<line>
+				<reportElement uuid="46babd01-1400-4cd6-a908-afe4327933ef" positionType="FixRelativeToBottom" x="1" y="153" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<image>
+				<reportElement uuid="e864a6be-83d3-4cd3-8c02-0de029395807" x="51" y="2" width="435" height="126"/>
+				<imageExpression><![CDATA["logo2.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="57c90a2b-b504-47d0-8fd9-888bbb61df1e" style="SubTitle" x="201" y="131" width="243" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Informe de Compras de Insumos Generado:]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement uuid="82287b93-2c63-4c8b-9702-4bd3334645d8" style="Column header" x="421" y="128" width="127" height="20" forecolor="#736343"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement uuid="1d49c1f3-22d4-4335-92c9-17a92fbb35a5" style="Row" mode="Opaque" x="0" y="0" width="555" height="15"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="0f470b71-9348-42e1-9ea4-dbf81979b19b" style="Detail" x="235" y="0" width="69" height="15"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{comprainsumo_fecha_compra}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="7dc9f3d7-cf45-4341-a5c2-850380bda058" style="Detail" x="346" y="0" width="69" height="15"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{comprainsumo_cant_compra}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="60f6fd02-fa62-44fa-829e-3ee420ae433b" style="Detail" x="452" y="0" width="69" height="15"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{comprainsumo_contenido}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="e031061b-c643-4504-afa3-5e5d0e039752" style="Detail" x="14" y="0" width="184" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{insumo_nombre_insumo}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="dea1ba01-5545-4746-ae5f-afa79901efae" style="Detail" x="374" y="0" width="69" height="15"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA["Unid"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="d181f135-ab61-42e1-aad5-2fbd6fc19d35" style="Detail" x="480" y="0" width="69" height="15"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA["Onz"]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement uuid="763cdb76-92a1-4a75-b987-a2dabd534bc2" positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement uuid="a141a8df-274b-4a99-8219-fba747b397b7" mode="Opaque" x="-21" y="1" width="597" height="24" forecolor="#D0B48E" backcolor="#F2EBDF"/>
+				<textField evaluationTime="Report">
+					<reportElement uuid="f4826718-6862-4eda-9960-82621e5953a3" style="Column header" x="533" y="0" width="40" height="20" forecolor="#736343"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="dc29cbe4-aacd-4c9b-8e15-bdff7edcfc93" style="Column header" x="453" y="0" width="80" height="20" forecolor="#736343"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement uuid="013435e3-33e5-4723-a9f9-1afaefdeef04" style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
