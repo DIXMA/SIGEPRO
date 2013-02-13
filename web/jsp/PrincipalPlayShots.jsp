@@ -22,6 +22,7 @@ else{
         
          <style type="text/css">              
             <%@include file = "../css/estio.css"%> 
+            <%@include file = "../css/style3.css"%>
         </style>
         
     </head>

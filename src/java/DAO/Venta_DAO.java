@@ -29,7 +29,7 @@ public class Venta_DAO {
         param[0]=id_Mesero;
         param[1]=costo;
         param[2]="V"+secuenciaIdVenta();
-       return (BaseDeDatos.getInstance().ejecutarActualizacionSQL(sql,param));
+        return (BaseDeDatos.getInstance().ejecutarActualizacionSQL(sql,param));
         /*if(ver)
         {
             boolean result=false;
@@ -91,7 +91,27 @@ public class Venta_DAO {
     }
     
    
- 
-  
+    /**
+     * Metodo que retorna el valor de la ultima venta registrada
+     * @return valor de la ultima venta
+     * @throws Exception 
+     */
+    public int valorUltimaVenta()throws Exception
+    {
+        int ret=0;
+        BaseDeDatos.getInstance().conectar();
+        String idV=this.obtenerIdUltimaVenta();
+        String sql="SELECT costo_venta FROM venta WHERE id_venta=?";
+        String param[]=new String[1];
+        param[0]=idV;
+        ArrayList<String> consulta=BaseDeDatos.getInstance().getConsultaSQL(sql, param);
+        if(consulta.size()>0)
+        {
+           String dto[]=consulta.get(0).split("-");
+           ret=Integer.parseInt(dto[0]);
+        }
+        return ret;
+    }
+   
    
 }

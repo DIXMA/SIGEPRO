@@ -190,7 +190,10 @@
          
         </script>
         
-        
+          <%
+             Facade dc=new Facade();
+             boolean siP=dc.verificarSiCajaAbierta();
+          %>
         
     </head>    
     <body id="bodyPricipal">
@@ -198,6 +201,8 @@
             <div id="CabeceraVaildarUser">                
             </div>
             <div id="contenidoIiSecion">
+             <%if(siP){%>
+                
                  <form name="myForm" action="RealizarVenta.jsp" method="post">
             <input type="text"  id="valoresOcultos" name="ocultosValores">             
             <center><label><h1>Pedido:</h1></label></center> 
@@ -320,6 +325,10 @@
                         <center><label>Copyright &copy; 2013 grupo Analisis y Diseño de Sistemas ufps IIsem 2012</label></center>  
                      
                 </center>
+                <%}
+                 else{%> 
+                 <h1>Debe realizar Apertura de Caja para Poder Vender</h1>
+                 <%}%>
             </div>
            <br>
             <br>         

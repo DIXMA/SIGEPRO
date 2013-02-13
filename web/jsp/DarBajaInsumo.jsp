@@ -110,7 +110,7 @@
             <div id="contenidoIiSecion">
                 
                 
-        <form id="registroCompra" name="formCompra" action="RealizarCompraProveedor.jsp">
+        <form id="registroCompra" name="formCompra" action="FinalizarDadaDeBajaInsumo.jsp">
             <fieldset>
                 <input type="text"  id="valoresOcultos" name="ocultosValores">             
             </fieldset>

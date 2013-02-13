@@ -68,4 +68,9 @@ public class Compra_DTO {
         this.nit = nit;
     }
     
+    public String getInfoCompraDeuda()
+    {
+        return this.getId_Compra()+"&"+this.getCosto_Compra()+"&"+this.getProveedor_Compra().getId_Proveedor();
+    }
+    
 }

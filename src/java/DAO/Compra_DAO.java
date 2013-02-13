@@ -4,6 +4,7 @@
  */
 package DAO;
 
+import DTO.*;
 import java.util.ArrayList;
 import util.*;
 
@@ -61,4 +62,47 @@ public class Compra_DAO {
     }
  
  
+    /**
+     * Metodo q retora las compras q se deben
+     * @return array con las compras q se deben
+     * @throws Exception 
+     */
+    public ArrayList<Compra_DTO> getIfoCompraDebe()throws Exception
+    {
+        ArrayList<Compra_DTO> compras=new ArrayList<Compra_DTO>();
+        String sql="SELECT id_compra,valor_compra,id_proveedor FROM compra WHERE estado=?";
+        String param[]=new String[1];
+        param[0]="D";
+        ArrayList<String> consulta=BaseDeDatos.getInstance().getConsultaSQL(sql, param);
+        if(consulta.size()>0)
+        {
+            for(int i=0;i<consulta.size();i++)
+            {
+                Proveedor_DTO pro=new Proveedor_DTO();
+                Compra_DTO com=new Compra_DTO();
+                String dto[]=consulta.get(i).split("-");
+                com.setId_Compra(dto[0]);
+                com.setCosto_Compra(Float.parseFloat(dto[1]));
+                pro.setId_Proveedor(dto[2]);
+                com.setProveedor_Compra(pro);
+                compras.add(com);
+            }
+        }
+        return compras;
+    }
+    
+    /**
+     * Metodo q permite actualizar el estado de una compra de 'D' a 'P' de deuda a paga
+     * @param idComp id de la compra se va axtualizar
+     * @return true=si lo logro o false=si no lo logro
+     * @throws Exception 
+     */
+    public boolean cambiarEstadoPagoDeuda(String idComp)throws Exception
+    {
+        String sql="UPDATE compra SET estado=? WHERE id_compra=?";
+        String param[]=new String[2];
+        param[0]="P";
+        param[1]=idComp;
+        return BaseDeDatos.getInstance().ejecutarActualizacionSQL(sql, param);
+    }
 }

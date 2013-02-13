@@ -221,8 +221,9 @@ public class Insumo_DAO {
     {
         BaseDeDatos.getInstance().conectar();
         String sql="UPDATE insumo SET estado=? WHERE id_insumo=?";
-        String param[]=new String[1];
+        String param[]=new String[2];
         param[0]="D";
+        param[1]=idinsumo;
         return BaseDeDatos.getInstance().ejecutarActualizacionSQL(sql, param);
     }
     

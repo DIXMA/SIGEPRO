@@ -23,5 +23,19 @@ public class Business_Venta {
          return (new Venta_DAO().crearVenta(idMesero, costo, fecha, productos)); 
     }
     
-   
+    /**
+     * Metodo que permite obtener el id de la ultima Venta
+     * @return id de la ultma venta registrada
+     * @throws Exception 
+     */
+     public String grtIdUltimVentatotal()throws Exception
+     {
+         return (new Venta_DAO().obtenerIdUltimaVenta());
+     }
+     
+     public int getValorUltimaVenta()throws Exception
+     {
+         return (new Venta_DAO().valorUltimaVenta());
+     }
+     
 }

@@ -203,5 +203,86 @@ public class Facade
    {
        return (new Business_Insumo().darBajaInsumoP(insumos));
    }
+ 
+   /**
+    * Metodo q realiza la invocacion para el registro de una nueva apertura de caja
+    * @param cantidadIni cantidad inicial de dinero con la que se inicia en caja
+    * @param fech fecha actual
+    * @return true si lo logra o false si no lo logra
+    * @throws Exception 
+    */
+   public boolean realizarAperturaCaja(String cantidadIni,String fech)throws Exception
+   {
+        return (new Business_ConsolidadoVentasDia().añadirAperturaCaja( cantidadIni, fech));
+   }
    
+   /**
+    * Metodo que permite verificar si hay apertura de caja para permitir
+    * registrar ventas
+    * @return true= si no se puede realizar venta o false= si se puede realizar la venta
+    * @throws Exception 
+    */
+   public boolean verificarSiCajaAbierta()throws Exception
+   {
+       return (new Business_ConsolidadoVentasDia().verificarAperturaCaja());
+   }
+   
+   /**
+    * Metodo que permite invocar la actualizacion del consoldado de ventas
+    * @return true=si lo logra o false=si no lo logra
+    * @throws Exception 
+    */
+   public boolean actualizarConsolidadoVentas()throws Exception
+   {
+       String totVent=String.valueOf(new Business_Venta().getValorUltimaVenta());
+       String aper=(new Business_ConsolidadoVentasDia().getIdAperturaUltim());
+       return (new Business_ConsolidadoVentasDia().actualizarTotalVentasRegistradas(aper, totVent));
+   }
+   
+   /**
+    * Metodo que invoca a realizar el cierre de caja 
+    * @return concatenacion de valor de ventas realizadas y valor con el se inicio en caja
+    * @throws Exception 
+    */
+   public String registrarCierreDeCaja()throws Exception
+   {
+       return (new Business_ConsolidadoVentasDia().realizarCierreDeCaja());
+   }
+   
+   /**
+    * Metodo que permite invocar la actualizacion del consoldado por ingreso a caja
+    * @return true=si lo logra o false=si no lo logra
+    * @throws Exception 
+    */
+   public boolean ingreso_Caja(String ret)throws Exception
+   {
+       String aper=(new Business_ConsolidadoVentasDia().getIdAperturaUltim());
+       return (new Business_ConsolidadoVentasDia().actualizarTotalVentasRegistradas(aper, ret));
+   }
+   
+   /**
+    * Metodo que invoca la concatenacion de la informacion de las compras en estado "D" debe
+    * @return array con la informacion de las compras que se deben
+    */
+   public ArrayList<String> cargarCompraDeudas()throws Exception
+   {
+       return (new Business_Compra().getcompraDebe());
+   }
+   
+   /**
+    * Metodo que permite invocar la actualizacion del estado de la deuda a paragar
+    * @param datos array con los datos de la deuda
+    * @return true=si lo logra o false si no l logra
+    * @throws Exception 
+    */
+   public boolean pagoProveedor(String datos[])throws Exception
+   {
+       return (new Business_Compra().pagarDeudaProveedor(datos));
+   }
+   
+   public boolean descontarPagoDeuda(String dto[])throws Exception
+   {
+       String aper=(new Business_ConsolidadoVentasDia().getIdAperturaUltim());
+       return (new Business_ConsolidadoVentasDia().actualizarPagoProveedor(aper, dto[1]));
+   }
 }

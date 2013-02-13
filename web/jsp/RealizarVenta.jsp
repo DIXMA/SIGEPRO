@@ -37,12 +37,16 @@
            Facade vent=new Facade();
            boolean x=vent.realizarVenta(datosMesero[0], fech, costo, obj);
            String z=vent.restarConsumoDiaPorVenta(fech);
+           boolean b=vent.actualizarConsolidadoVentas();
         %>
         
     </head>
-    <body>
-        
-    <center><label>Registro de Ventas</label>
+    <body id="bodyPricipal">
+        <div id="contenedorVaildarUser">
+            <div id="CabeceraVaildarUser">                
+            </div>
+            <div id="contenidoIiSecion">
+               <center><label>Registro de Ventas</label>
         <textarea readonly="" id="textVenta"><%=mensaje%></textarea></center>
         <%
       if(z!=null)
@@ -61,10 +65,26 @@
       }else{%>
         <script>alert(<%=z%>);</script>
       <%}
+           
         %>
        <hr>
                 <center>
                         <destacar><a href="../jsp/inicio.jsp">Volver a la Página Inicial</a></destacar>
                 </center>
+               <center><label>Copyright &copy; 2013 grupo Analisis y Diseño de Sistemas ufps IIsem 2012</label></center>   
+            </div>
+             
+            <div id="PieVaildarUser">
+           
+            
+            </div>
+        </div>
+        
+        
+        
+        
+        
+        
+   
     </body>
 </html>

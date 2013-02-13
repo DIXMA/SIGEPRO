@@ -4,6 +4,7 @@
     Author     : CORTEX
 --%>
 
+<%@page import="Business.Facade"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -49,8 +50,16 @@
              }
             
         </script>
+        <%
+            Facade f=new Facade();
+            boolean siP=false;
+            
+        %>
+        
     </head>
     <body>
+        
+        
         <form name="RegProveedor" id="RegProv" action="FibalizarRegistroProveedor.jsp" method="post" onsubmit="return validarDatos();">
                     <fieldset>
                         <legend>Informacio Proveedor</legend>

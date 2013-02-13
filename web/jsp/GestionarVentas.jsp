@@ -32,8 +32,15 @@ HttpSession sesionOk = request.getSession();
         if (sesionOk.getAttribute("rol").equals("Cajero")){%>  
         <fieldset>
             <legend>Movimientos de Caja</legend>
-            <a target="_blank" href="MovimientosCaja.jsp"  class="a-btn">
-               <span class="a-btn-text">Movimientos</span>
+            <a target="algoX" href="AperturaCaja.jsp"  class="a-btn">
+               <span class="a-btn-text">Apertura de</span>
+               <span class="a-btn-slide-text">Caja</span>
+               <span class="a-btn-icon-right">
+               <span></span>
+               </span>
+            </a>
+            <a target="_blank" href="CierreDeCaja.jsp"  class="a-btn">
+               <span class="a-btn-text">Cierre de</span>
                <span class="a-btn-slide-text">Caja</span>
                <span class="a-btn-icon-right">
                <span></span>
@@ -56,7 +63,7 @@ HttpSession sesionOk = request.getSession();
         if (sesionOk.getAttribute("rol").equals("Administrador")){%>  
             <fieldset>
                 <legend>Ingreso a Caja</legend>
-                <a target="_blank" href="IngresoCaja.jsp"  class="a-btn">
+                <a target="algoX" href="IngresoCaja.jsp"  class="a-btn">
                    <span class="a-btn-text">Ingreso</span>
                    <span class="a-btn-slide-text">Caja</span>
                    <span class="a-btn-icon-right">
@@ -68,7 +75,7 @@ HttpSession sesionOk = request.getSession();
         if (sesionOk.getAttribute("rol").equals("Administrador")){%>  
             <fieldset>
                 <legend>Pago Proveedor</legend>
-                <a target="_blank" href="PagoProveedor.jsp"  class="a-btn">
+                <a target="algoX" href="PagoProveedor.jsp"  class="a-btn">
                    <span class="a-btn-text">Pago</span>
                    <span class="a-btn-slide-text">Proveedor</span>
                    <span class="a-btn-icon-right">
