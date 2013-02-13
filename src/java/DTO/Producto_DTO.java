@@ -73,6 +73,6 @@ public class Producto_DTO {
     
     public String getDatos()
     {
-        return this.getId_Produto()+"$"+this.getReceta_Producto().getId_Receta()+"$"+this.getTipo_Producto()+"$"+this.getPrecio_Producto()+"$"+this.getNombre_Producto();
+        return this.getId_Produto()+"%"+this.getReceta_Producto().getId_Receta()+"%"+this.getTipo_Producto()+"%"+this.getPrecio_Producto()+"%"+this.getNombre_Producto();
     }
 }

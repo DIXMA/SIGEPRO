@@ -26,7 +26,7 @@
                     var cell1 = row.insertCell(0);
                     var element1 = document.createElement("input");
                     element1.type = "text";
-                    element2.readonly = "";
+                    element1.readonly = "";
                     element1.value=id_producto;
                     cell1.appendChild(element1);
                     var cell2 = row.insertCell(1);
@@ -84,8 +84,9 @@
                         if(da.size()>0){
                             for(int i=0;i<da.size();i++)
                             {
-                                String dto[]=da.get(i).split("$");
-                                String sx="<script type='text/javascript'>addRow('TBprodVenta','"+dto[0]+"','"+dto[1]+"','"+dto[2]+"','"+dto[3]+"','"+dto[4]+");</script>";
+                                String dto[]=da.get(i).split("%");
+                                System.err.println("!!!!!!!!!!! Esta mierda no sirvio"+dto.length+dto[0]);
+                                String sx="<script type='text/javascript'>addRow('TBprodVenta','"+dto[0]+"','"+dto[1]+"','"+dto[2]+"','"+dto[3]+"','"+dto[4]+"');</script>";
                                %>
                                
                                <%=sx%>
