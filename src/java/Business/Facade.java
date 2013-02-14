@@ -307,6 +307,7 @@ public class Facade
    public void informeCompraInsumo()throws Exception
    {
        GeneradorReportes f=new GeneradorReportes();
+       System.out.println("esto es dentro de la facada");
        f.generadorReporteCompraInsumo();
    }
    

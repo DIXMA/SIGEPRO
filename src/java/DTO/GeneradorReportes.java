@@ -1,6 +1,7 @@
 
 package DTO;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -61,10 +62,15 @@ public class GeneradorReportes {
         String fecha =""+ hoy.getDay() + hoy.getMonth() + hoy.getYear()+ hoy.getHours()+hoy.getMinutes();
         try
         {
-            JasperReport reporte = (JasperReport) JRLoader.loadObject("reportecomprasdeinsumos.jasper");
+            
+            System.out.println("esto es dentro del metodo que enera reportes");
+            //String ruta = File.separator+"build"+File.separator+"plantillas"+File.separator+"reportecomprasdeinsumos.jasper";
+            String ruta = "reportecomprasdeinsumos.jasper";
+            JasperReport reporte = (JasperReport) JRLoader.loadObjectFromFile(ruta);
+           // JasperReport reporte = (JasperReport) JRLoader.loadObject("./src/plantillas/reportecomprasdeinsumos.jasper");
             Class.forName("org.postgresql.Driver");
             Connection connection = null;
-            connection = DriverManager.getConnection("jdbc:postgresql://sandbox2.ufps.edu.co/SIGEPRO","postgres", "ufps_f9");
+            connection = DriverManager.getConnection("jdbc:postgresql://localhost/SIGEPRO","postgres", "123456789");
             JasperPrint jasperPrint = JasperFillManager.fillReport(reporte, null, connection);
             connection.close();
             JRExporter exporter = new JRPdfExporter();
@@ -72,8 +78,8 @@ public class GeneradorReportes {
             exporter.setParameter(JRExporterParameter.OUTPUT_FILE, new java.io.File("./src/Reportes/"+"CompraInsumo"+fecha+".pdf"));
             exporter.exportReport();
         }
-        catch(JRException e)
-        {
+        catch(JRException e){
+            System.err.println("este es el error -> " + e.getMessage());
         }  
     }
         

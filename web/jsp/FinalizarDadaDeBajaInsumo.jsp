@@ -44,7 +44,7 @@
                 if(x)
                 {%>
                     <center><label>Salida realizada con Exito</label>  
-                    <a href="../jsp/DarBajaInsumo.jsp" id="button4" class="buttonText4">Realizar otra Salida</a></center>
+                        <a href="../jsp/DarBajaInsumo.jsp" id="button4" class="buttonText4">Realizar otra Salida</a></center>
                 <%}
                   else
                   { %>
