@@ -22,6 +22,7 @@
         <div class="close"><a href="#" id="close"><!--img src="images/close.png"/--></a></div>
         <div>
             <div class="main">
+                <a href="http://ingsistemas.ufps.edu.co/ingsistemas/"><img src="./img/u.png" title="IngSistemas UFPS" style="position: fixed; bottom: 10px; right: 2%;" id="u"/></a>
 		<div class="box">
 			<h2>Inicio de Sesion</h2>
 			<!--h3><a href="./register.php">Regístrate</a> o ingresa tu usuario y contrase&ntilde;a</h3-->

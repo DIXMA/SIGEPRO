@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteinventario" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="44c24edd-df00-4f05-a60e-f0db42881787">
+	<property name="ireport.zoom" value="1.2100000000000002"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     inventario."id_insumo" AS inventario_id_insumo,
+     inventario."cantidad_total" AS inventario_cantidad_total,
+     insumo."id_insumo" AS insumo_id_insumo,
+     insumo."nombre_insumo" AS insumo_nombre_insumo,
+     insumo."contenido" AS insumo_contenido,
+     insumo."unidades" AS insumo_unidades
+FROM
+     "public"."insumo" insumo INNER JOIN "public"."inventario" inventario ON insumo."id_insumo" = inventario."id_insumo"]]>
+	</queryString>
+	<field name="inventario_id_insumo" class="java.lang.String"/>
+	<field name="inventario_cantidad_total" class="java.lang.Integer"/>
+	<field name="insumo_id_insumo" class="java.lang.String"/>
+	<field name="insumo_nombre_insumo" class="java.lang.String"/>
+	<field name="insumo_contenido" class="java.lang.Integer"/>
+	<field name="insumo_unidades" class="java.lang.Integer"/>
+	<group name="inventario_id_insumo">
+		<groupExpression><![CDATA[$F{inventario_id_insumo}]]></groupExpression>
+		<groupHeader>
+			<band height="6"/>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="156" splitType="Stretch">
+			<line>
+				<reportElement uuid="adcec4ed-93f5-4299-97a3-947ab6f6c68f" positionType="FixRelativeToBottom" x="0" y="2" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement uuid="1cdb9d4d-e13d-4d23-804a-d3c5db8eeef7" style="Column header" x="459" y="134" width="93" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[Cantidad Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5bba6a71-ecef-496a-988d-5b1de3ccc892" style="Column header" x="17" y="134" width="154" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="edaa808c-17a3-4f0c-a789-432f3f2f625c" style="Column header" x="220" y="136" width="71" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[Contenido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b560f1e0-cd71-4eb5-9c2b-5f8ea6d4b4f1" style="Column header" x="348" y="136" width="73" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[Unidades]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="e4c04a3f-71a4-4ef3-8aed-a67920eeee88" x="98" y="4" width="381" height="103"/>
+				<imageExpression><![CDATA["logo2.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="2027f6bb-7455-4b68-b002-6e4a18813ff8" style="Column header" x="212" y="110" width="193" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[Informe de Inventario Generado :]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement uuid="3cd0d599-d3b0-41e7-b3cc-0595a2753fdc" style="Column header" x="411" y="107" width="110" height="20" forecolor="#736343"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="1deeae61-8376-45f3-96a6-7fd92ff21cb3" positionType="FixRelativeToBottom" x="-1" y="150" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement uuid="d5db80fe-0e89-4b2a-bebb-490a9366bd23" style="Row" mode="Opaque" x="0" y="0" width="555" height="15"/>
+				<textField isStretchWithOverflow="true" pattern="#,##0">
+					<reportElement uuid="58e83f73-a1a3-41f1-b7ba-f4e98fcb6356" style="Detail" x="451" y="0" width="92" height="15"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{inventario_cantidad_total}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="b3db53f5-cbe8-45a5-82e7-d87dca5310b0" style="Detail" x="15" y="0" width="156" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{insumo_nombre_insumo}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="#,##0">
+					<reportElement uuid="98c64206-7ad6-43d0-8a80-5895b3324b3c" style="Detail" x="212" y="0" width="71" height="15"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{insumo_contenido}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="#,##0">
+					<reportElement uuid="5fbff773-a98d-4798-8307-a49c3d6287b2" style="Detail" x="338" y="0" width="69" height="15"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{insumo_unidades}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="">
+					<reportElement uuid="e4e30294-7bac-45f9-a41d-63cfc9793738" style="Detail" x="497" y="0" width="58" height="15"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA["Onz"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="">
+					<reportElement uuid="061c9fd7-0a9e-4020-b927-03e303e59ade" style="Detail" x="244" y="0" width="58" height="15"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA["Onz"]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement uuid="37dcf891-a7ba-486c-b686-0eac9be57172" positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement uuid="f6c88bf4-917b-4574-b827-8438369afb8b" mode="Opaque" x="-21" y="1" width="597" height="24" forecolor="#D0B48E" backcolor="#F2EBDF"/>
+				<textField evaluationTime="Report">
+					<reportElement uuid="eb97197a-58f0-4293-be33-4385adcedd67" style="Column header" x="533" y="0" width="40" height="20" forecolor="#736343"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="6ed9c6d5-494b-4aa2-beab-d8443988a535" style="Column header" x="453" y="0" width="80" height="20" forecolor="#736343"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

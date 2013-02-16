@@ -73,7 +73,7 @@
                 </center>
                <center><label>Copyright &copy; 2013 grupo Analisis y Diseño de Sistemas ufps IIsem 2012</label></center>   
             </div>
-             
+             <a href="http://ingsistemas.ufps.edu.co/ingsistemas/"><img src="../img/u.png" title="Ir arriba" style="position: fixed; bottom: 10px; right: 2%;" id="u"/></a>  
             <div id="PieVaildarUser">
            
             

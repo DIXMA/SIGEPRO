@@ -155,7 +155,7 @@
                   
                </div>
               
-                
+              <a href="http://ingsistemas.ufps.edu.co/ingsistemas/"><img src="../img/u.png" title="Ir arriba" style="position: fixed; bottom: 10px; right: 2%;" id="u"/></a>  
          <hr>
                 <center>
                         <destacar><a href="../jsp/PrincipalPlayShots.jsp">Volver a la Página Inicial</a></destacar>

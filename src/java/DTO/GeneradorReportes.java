@@ -65,7 +65,7 @@ public class GeneradorReportes {
             
             System.out.println("esto es dentro del metodo que enera reportes");
             //String ruta = File.separator+"build"+File.separator+"plantillas"+File.separator+"reportecomprasdeinsumos.jasper";
-            String ruta = "reportecomprasdeinsumos.jasper";
+            String ruta = "WEB-INF/reportecomprasdeinsumos.jasper";
             JasperReport reporte = (JasperReport) JRLoader.loadObjectFromFile(ruta);
            // JasperReport reporte = (JasperReport) JRLoader.loadObject("./src/plantillas/reportecomprasdeinsumos.jasper");
             Class.forName("org.postgresql.Driver");
@@ -76,6 +76,7 @@ public class GeneradorReportes {
             JRExporter exporter = new JRPdfExporter();
             exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
             exporter.setParameter(JRExporterParameter.OUTPUT_FILE, new java.io.File("./src/Reportes/"+"CompraInsumo"+fecha+".pdf"));
+            //exporter.setParameter(JRExporterParameter.OUTPUT_STREAM, out);
             exporter.exportReport();
         }
         catch(JRException e){

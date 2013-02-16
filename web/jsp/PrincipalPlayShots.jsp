@@ -28,6 +28,7 @@ else{
     </head>
     <body id="bodyPricipal"> 
    <a href="../cerrar.jsp" id="button2" class="buttonText">Cerrar Sesion</a>
+  <a href="http://ingsistemas.ufps.edu.co/ingsistemas/"><img src="../img/u.png" title="Ir arriba" style="position: fixed; bottom: 10px; right: 2%;" id="u"/></a>
         <div id="contenedorVaildarUser">
             <div id="CabeceraVaildarUser">                
             </div>

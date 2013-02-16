@@ -43,7 +43,7 @@
             <div id="CabeceraVaildarUser">                
             </div>
             <div id="contenidoIiSecion">
-                 <center><label>Registro de Ventas</label>
+                 <center><label>Registro de Salida Dia</label>
         <textarea readonly="" id="textVenta"><%=msj%></textarea></center>       
            <%
             if(z&&w)
@@ -63,7 +63,7 @@
         <script>alert("No se pudo actualizar el inventario");</script>
       <%}
         %>
-        
+        <a href="http://ingsistemas.ufps.edu.co/ingsistemas/"><img src="../img/u.png" title="Ir arriba" style="position: fixed; bottom: 10px; right: 2%;" id="u"/></a>
             </div>
             <div id="PieVaildarUser">  
             </div>

@@ -26,7 +26,8 @@ HttpSession sesionOk = request.getSession();
     </head>
     <body >
         
-        <form>
+        <form action="ServletReporte1">
+           <!-- <object type="application/pdf" data="http://localhost:8084/Servlet/ServletReporte1" width="500" height="650"></object>-->
             <fieldset>
                 <legend>Rago de Fecha</legend>
                 <label>Fecha Desde<input type="text" readonly="" name="date" class="tcal" value="" id="FechaDesde"/></label><label>Fecha Hasta<input type="text" readonly="" name="date" class="tcal" value="" id="FechaDesde"/></label>
@@ -51,8 +52,10 @@ HttpSession sesionOk = request.getSession();
                         <a href="#" class="enlace boton" onclick="<% x.informeCompraInsumo(); %>">Compra de Insumos</a> 
                         <a href="#" class="enlace boton" onclick="">Dadas de Baja</a> 
                     </center>
+                       
             </fieldset>
             <%}%>
+            <!-- <input type="submit" vlaue="prueba">-->
         </form>
         <hr>
                 <center>
